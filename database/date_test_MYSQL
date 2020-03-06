@@ -1,0 +1,139 @@
+insert into festivaluri(Locatie, Nume_oras, Nr_artisti) values('Sala Palatului', 'Bucuresti', 15);
+insert into festivaluri(Locatie, Nume_oras, Nr_artisti) values('Pietonalul Unirii', 'Botosani', 16);
+insert into festivaluri(Locatie, Nume_oras, Nr_artisti) values('Palatul Culturii', 'Iasi', 17);
+
+
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Smiley', 'Pop','Nemuritori');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Akcent', 'Pop','Ti-am promis');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Trooper', 'Rock','Tari ca muntii');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Vita de vie', 'Rock','Praf de stele');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical) VALUES ('Holograf', 'Rock');
+INSERT INTO artisti(Nume_de_scena, Piesa_start) VALUES ('Vama veche', 'Perfect fara tine');
+INSERT INTO artisti(Nume_de_scena, Piesa_start) VALUES ('Argatu', 'Valea regilor');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical) VALUES ('The motans', 'Pop');
+INSERT INTO artisti(Nume_de_scena) VALUES ('Delia');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Brenciu', null, null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Irina Rhymes', 'Pop', null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Inna', 'Pop', null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Alexandra Stan', 'Pop',null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Antonia', 'Pop', '03abou');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Andra', 'Pop','Avioane de hartie');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Andreea Balan',  null, null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Alternosfera', 'Rock','Ploile nu vin');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('B.U.G', 'Rap', null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Speack', null,null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Parazitii', 'Rap',null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('3 Sud Est', 'Pop','Amintirile');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Carla`s Dream', 'Pop','Sub pielea mea');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('The Motans', 'Pop','Indispus');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Bosquito', 'Rock','Pepita');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Deliric', 'Rap' ,null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Spike', 'Rap', null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Iris', 'Rock', null);
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Vescan', 'Rap','Tic-tac');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('Anda', 'Pop', null);
+
+
+insert into tip_bilet values('class1',450);
+insert into tip_bilet values('class2',350);
+insert into tip_bilet values('class3',250);
+insert into tip_bilet values('vip',700);
+
+
+insert into spectatori values('1841115209291','Tudor','Ionescu','0722222222','TuPo@gmail.com');
+insert into spectatori values('2310111400123','Teodora','Tamas','0752212222','teoTamas@yahoo.com');
+insert into spectatori values('1810111400456','Vlad','Manescu','0742322129','VladTheMan@yahoo.com');
+insert into spectatori values('1710111400789','Ionut','Pop','0742332822','Ionpopica@gmail.com');
+insert into spectatori values('2210111400011','03iana','Matei','0742372022','mMatei@gmail.com');
+insert into spectatori values('2310111400211','Elena','Popescu','0742332321','ElenaPopescu@yahoo.com');
+insert into spectatori values('1941115209291','03ian','Daniliuc','0762282022','03i_Dan@yahoo.com');
+insert into spectatori values('2010111400123','Ionela','Pasarescu','0752200222','ionela.pas@yahoo.com');
+insert into spectatori values('1310111400456','Vali','Ionescu','0742322000','Vali_ion@yahoo.com');
+insert into spectatori values('1010111400789','Alex','Vamanu','0741132822','AlexVam@gmail.com');
+insert into spectatori values('2710111400011','Teodora','Ripiceanu','0752392022','ripi.teo@yahoo.com');
+insert into spectatori values('2510111400211','Alexandra','Stan','0752535321','ale_stan@yahoo.com');
+insert into spectatori values('1210111400789','Alin','Baciu','0752305522','baciu_alex121@gmail.com');
+insert into spectatori values('2030111400011','Diana','Popescu','0763337202','DianaPopescu@yahoo.com');
+insert into spectatori values('2110111400211','Ana','Sasescu','0782332821','AnaSas13131@yahoo.com');
+
+
+insert into bilete values('22-03-2020','26-03-2020',(select cnp from spectatori where cnp ='1841115209291'),(select id_festival from festivaluri where id_festival = 1), 'class1');
+insert into bilete values('23-03-2020','24-03-2020',(select cnp from spectatori where cnp ='2310111400123'),(select id_festival from festivaluri where id_festival = 1), 'class2');
+insert into bilete values('25-03-2020','26-03-2020',(select cnp from spectatori where cnp ='1810111400456'),(select id_festival from festivaluri where id_festival = 1), 'vip');
+insert into bilete values('22-03-2020','26-03-2020',(select cnp from spectatori where cnp ='1710111400789'),(select id_festival from festivaluri where id_festival = 1), 'vip');
+insert into bilete values('24-03-2020','25-03-2020',(select cnp from spectatori where cnp ='2210111400011'),(select id_festival from festivaluri where id_festival = 1), 'class3');
+insert into bilete values('9-08-2020','12-08-2020',(select cnp from spectatori where cnp ='2310111400211'),(select id_festival from festivaluri where id_festival = 2), 'class1');
+insert into bilete values('9-08-2020','11-08-2020',(select cnp from spectatori where cnp ='1941115209291'),(select id_festival from festivaluri where id_festival = 2), 'class3');
+insert into bilete values('10-08-2020','13-08-2020',(select cnp from spectatori where cnp ='2010111400123'),(select id_festival from festivaluri where id_festival = 2), 'class1');
+insert into bilete values('11-08-2020','12-08-2020',(select cnp from spectatori where cnp ='1310111400456'),(select id_festival from festivaluri where id_festival = 2), 'vip');
+insert into bilete values('10-08-2020','11-08-2020',(select cnp from spectatori where cnp ='1010111400789'),(select id_festival from festivaluri where id_festival = 2), 'class1');
+insert into bilete values('18-09-2020','19-09-2020',(select cnp from spectatori where cnp ='2710111400011'),(select id_festival from festivaluri where id_festival = 3), 'class3');
+insert into bilete values('19-09-2020','20-09-2020',(select cnp from spectatori where cnp ='2510111400211'),(select id_festival from festivaluri where id_festival = 3), 'class3');
+insert into bilete values('18-09-2020','21-09-2020',(select cnp from spectatori where cnp ='1210111400789'),(select id_festival from festivaluri where id_festival = 3), 'vip');
+insert into bilete values('20-09-2020','21-09-2020',(select cnp from spectatori where cnp ='2030111400011'),(select id_festival from festivaluri where id_festival = 3), 'class2');
+insert into bilete values('19-09-2020','21-09-2020',(select cnp from spectatori where cnp ='2110111400211'),(select id_festival from festivaluri where id_festival = 3), 'class1');
+
+insert into spectacole values('2020-03-22', '18:00','20:00',(select id_artist from artisti where id_artist = 1), (select id_festival from festivaluri where id_festival = 1),2);
+insert into spectacole values('2020-03-22', '16:30','18:00',(select id_artist from artisti where id_artist = 3), (select id_festival from festivaluri where id_festival = 1),null);
+insert into spectacole values('2020-03-22', '20:00','21:00',(select id_artist from artisti where id_artist = 7), (select id_festival from festivaluri where id_festival = 1),0);
+insert into spectacole values('2020-03-22', '21:00','23:00',(select id_artist from artisti where id_artist = 9), (select id_festival from festivaluri where id_festival = 1),3);
+insert into spectacole values('2020-03-23', '17:00','18:30',(select id_artist from artisti where id_artist = 2), (select id_festival from festivaluri where id_festival = 1),2);
+insert into spectacole values('2020-03-23', '19:00','20:00',(select id_artist from artisti where id_artist = 4), (select id_festival from festivaluri where id_festival = 1),null);
+insert into spectacole values('2020-03-23', '20:00','21:20',(select id_artist from artisti where id_artist = 5), (select id_festival from festivaluri where id_festival = 1),0);
+insert into spectacole values('2020-03-23', '21:30','22:00',(select id_artist from artisti where id_artist = 6), (select id_festival from festivaluri where id_festival = 1),3);
+insert into spectacole values('2020-03-23', '22:00','23:00',(select id_artist from artisti where id_artist = 10), (select id_festival from festivaluri where id_festival = 1),3);
+insert into spectacole values('2020-03-24', '19:00','21:00',(select id_artist from artisti where id_artist = 8), (select id_festival from festivaluri where id_festival = 1),1);
+insert into spectacole values('2020-03-24', '21:30','22:30',(select id_artist from artisti where id_artist = 16), (select id_festival from festivaluri where id_festival = 1),1);
+insert into spectacole values('2020-03-24', '22:30','23:45',(select id_artist from artisti where id_artist = 12), (select id_festival from festivaluri where id_festival = 1),1);
+insert into spectacole values('2020-03-25', '22:30','23:30',(select id_artist from artisti where id_artist = 13), (select id_festival from festivaluri where id_festival = 1),1);
+insert into spectacole values('2020-03-25', '19:30','21:00',(select id_artist from artisti where id_artist = 11), (select id_festival from festivaluri where id_festival = 1),1);
+insert into spectacole values('2020-03-25', '21:00','22:20',(select id_artist from artisti where id_artist = 14), (select id_festival from festivaluri where id_festival = 1),1);
+insert into spectacole values('2020-03-26', '17:30','18:30',(select id_artist from artisti where id_artist = 20), (select id_festival from festivaluri where id_festival = 1),2);
+insert into spectacole values('2020-03-26', '18:30','19:30',(select id_artist from artisti where id_artist = 22), (select id_festival from festivaluri where id_festival = 1),0);
+insert into spectacole values('2020-03-26', '20:00','21:00',(select id_artist from artisti where id_artist = 18), (select id_festival from festivaluri where id_festival = 1),1);
+insert into spectacole values('2020-03-26', '21:00','22:40',(select id_artist from artisti where id_artist = 17), (select id_festival from festivaluri where id_festival = 1),0);
+insert into spectacole values('2020-03-26', '22:40','23:50',(select id_artist from artisti where id_artist = 19), (select id_festival from festivaluri where id_festival = 1),2);
+
+insert into spectacole values('2020-08-09', '16:00','18:00',(select id_artist from artisti where id_artist = 10), (select id_festival from festivaluri where id_festival = 2),1);
+insert into spectacole values('2020-08-09', '18:30','19:30',(select id_artist from artisti where id_artist = 9), (select id_festival from festivaluri where id_festival = 2),null);
+insert into spectacole values('2020-08-09', '20:00','21:00',(select id_artist from artisti where id_artist = 8), (select id_festival from festivaluri where id_festival = 2),null);
+insert into spectacole values('2020-08-09', '21:00','23:00',(select id_artist from artisti where id_artist = 7), (select id_festival from festivaluri where id_festival = 2),2);
+insert into spectacole values('2020-08-10', '17:00','18:30',(select id_artist from artisti where id_artist = 1), (select id_festival from festivaluri where id_festival = 2),1);
+insert into spectacole values('2020-08-10', '19:00','20:00',(select id_artist from artisti where id_artist = 2), (select id_festival from festivaluri where id_festival = 2),null);
+insert into spectacole values('2020-08-10', '20:00','21:20',(select id_artist from artisti where id_artist = 3), (select id_festival from festivaluri where id_festival = 2),1);
+insert into spectacole values('2020-08-10', '21:30','22:00',(select id_artist from artisti where id_artist = 4), (select id_festival from festivaluri where id_festival = 2),null);
+insert into spectacole values('2020-08-10', '22:00','23:00',(select id_artist from artisti where id_artist = 5), (select id_festival from festivaluri where id_festival = 2),null);
+insert into spectacole values('2020-08-11', '19:00','21:00',(select id_artist from artisti where id_artist = 11), (select id_festival from festivaluri where id_festival = 2),1);
+insert into spectacole values('2020-08-11', '21:30','22:30',(select id_artist from artisti where id_artist = 6), (select id_festival from festivaluri where id_festival = 2),0);
+insert into spectacole values('2020-08-11', '22:30','23:30',(select id_artist from artisti where id_artist = 28), (select id_festival from festivaluri where id_festival = 2),0);
+insert into spectacole values('2020-08-12', '17:00','18:00',(select id_artist from artisti where id_artist = 15), (select id_festival from festivaluri where id_festival = 2),2);
+insert into spectacole values('2020-08-12', '19:00','20:00',(select id_artist from artisti where id_artist = 13), (select id_festival from festivaluri where id_festival = 2),0);
+insert into spectacole values('2020-08-12', '20:30','21:30',(select id_artist from artisti where id_artist = 12), (select id_festival from festivaluri where id_festival = 2),0);
+insert into spectacole values('2020-08-12', '21:30','22:20',(select id_artist from artisti where id_artist = 14), (select id_festival from festivaluri where id_festival = 2),1);
+insert into spectacole values('2020-08-12', '22:30','23:45',(select id_artist from artisti where id_artist = 16), (select id_festival from festivaluri where id_festival = 2),2);
+insert into spectacole values('2020-08-13', '18:30','19:30',(select id_artist from artisti where id_artist = 24), (select id_festival from festivaluri where id_festival = 2),1);
+insert into spectacole values('2020-08-13', '20:00','21:40',(select id_artist from artisti where id_artist = 18), (select id_festival from festivaluri where id_festival = 2),null);
+insert into spectacole values('2020-08-13', '21:40','22:40',(select id_artist from artisti where id_artist = 17), (select id_festival from festivaluri where id_festival = 2),2);
+insert into spectacole values('2020-08-13', '22:40','23:50',(select id_artist from artisti where id_artist = 19), (select id_festival from festivaluri where id_festival = 2),0);
+
+insert into spectacole values('2020-09-18', '16:00','18:00',(select id_artist from artisti where id_artist = 1), (select id_festival from festivaluri where id_festival = 3),2);
+insert into spectacole values('2020-09-18', '18:30','19:30',(select id_artist from artisti where id_artist = 3), (select id_festival from festivaluri where id_festival = 3),0);
+insert into spectacole values('2020-09-18', '20:00','21:00',(select id_artist from artisti where id_artist = 5), (select id_festival from festivaluri where id_festival = 3),0);
+insert into spectacole values('2020-09-18', '21:00','22:00',(select id_artist from artisti where id_artist = 7), (select id_festival from festivaluri where id_festival = 3),null);
+insert into spectacole values('2020-09-18', '22:30','23:30',(select id_artist from artisti where id_artist = 9), (select id_festival from festivaluri where id_festival = 3),1);
+insert into spectacole values('2020-09-19', '18:00','20:00',(select id_artist from artisti where id_artist = 2), (select id_festival from festivaluri where id_festival = 3),2);
+insert into spectacole values('2020-09-19', '20:00','22:20',(select id_artist from artisti where id_artist = 4), (select id_festival from festivaluri where id_festival = 3),0);
+insert into spectacole values('2020-09-19', '22:30','23:30',(select id_artist from artisti where id_artist = 6), (select id_festival from festivaluri where id_festival = 3),1);
+insert into spectacole values('2020-09-20', '17:00','18:00',(select id_artist from artisti where id_artist = 13), (select id_festival from festivaluri where id_festival = 3),0);
+insert into spectacole values('2020-09-20', '18:00','19:00',(select id_artist from artisti where id_artist = 8), (select id_festival from festivaluri where id_festival = 3),null);
+insert into spectacole values('2020-09-20', '19:00','21:00',(select id_artist from artisti where id_artist = 10), (select id_festival from festivaluri where id_festival = 3),1);
+insert into spectacole values('2020-09-20', '21:00','22:00',(select id_artist from artisti where id_artist = 11), (select id_festival from festivaluri where id_festival = 3),null);
+insert into spectacole values('2020-09-20', '22:00','23:00',(select id_artist from artisti where id_artist = 12), (select id_festival from festivaluri where id_festival = 3),0);
+insert into spectacole values('2020-09-21', '17:00','18:00',(select id_artist from artisti where id_artist = 17), (select id_festival from festivaluri where id_festival = 3),null);
+insert into spectacole values('2020-09-21', '18:30','19:30',(select id_artist from artisti where id_artist = 19), (select id_festival from festivaluri where id_festival = 3),0);
+insert into spectacole values('2020-09-21', '19:30','20:30',(select id_artist from artisti where id_artist = 23), (select id_festival from festivaluri where id_festival = 3),1);
+insert into spectacole values('2020-09-21', '20:30','21:30',(select id_artist from artisti where id_artist = 22), (select id_festival from festivaluri where id_festival = 3),0);
+insert into spectacole values('2020-09-21', '21:30','22:20',(select id_artist from artisti where id_artist = 21), (select id_festival from festivaluri where id_festival = 3),null);
+insert into spectacole values('2020-09-21', '22:30','23:45',(select id_artist from artisti where id_artist = 20), (select id_festival from festivaluri where id_festival = 3),1);
+
+

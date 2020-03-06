@@ -1,0 +1,624 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,600,700)
+	;
+
+html {
+	font-size: 62.5%;
+	box-sizing: border-box
+}
+
+*, :after, :before {
+	box-sizing: inherit
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background-color: #fff;
+	font-family: Raleway, Helvetica, Arial, sans-serif;
+	font-size: 1.8rem;
+	line-height: 160%;
+	font-weight: 300
+}
+
+.topText{
+	   padding-top: 80px;
+}
+
+.container {
+	width: 80%;
+	max-width: 1200px;
+	margin: 0 auto
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	font-family: Raleway, Helvetica, Arial, sans-serif;
+	color: #bfc406
+}
+
+img {
+	display: block;
+	max-width: 100%
+}
+
+a {
+	font-weight: 700;
+	color: #d14348
+}
+
+a:focus, a:hover {
+	text-decoration: none
+}
+
+em {
+	font-weight: 700;
+	font-size: 140%;
+	color: #f3d350;
+	font-style: normal
+}
+
+.header {
+	background: -webkit-linear-gradient(top, rgba(0, 0, 0, .2),
+		rgba(0, 0, 0, .5)), url(../images/backgrounds/festival_intro.jpg);
+	background: linear-gradient(180deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .5)),
+		url(../images/backgrounds/festival_intro.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	height: 100vh;
+	max-height: 25px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	text-align: center
+}
+
+.header .tagline {
+	display: none
+}
+
+@media screen and (min-width:600px) {
+	.header {
+		background: -webkit-linear-gradient(top, rgba(0, 0, 0, .2),
+			rgba(0, 0, 0, .5)), url(../images/backgrounds/festival_intro.jpg);
+		background: linear-gradient(180deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .5)),
+			url(../images/backgrounds/festival_intro.jpg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+		height: 100vh;
+		max-height: 300px
+	}
+}
+
+@media screen and (min-width:600px) {
+	.header .tagline {
+		display: block;
+		color: #fff;
+		max-width: 40em;
+		line-height: 140%;
+		font-size: 2.5rem
+	}
+	.header .tagline h1 {
+		display: none
+	}
+	.header .tagline em {
+		font-size: 140%;
+		color: #f3d350;
+		font-style: normal
+	}
+}
+
+.nav {
+	
+	background-color: #348179;
+	position: fixed; /* Set the navbar to fixed position */
+	width: 100%; /* Full width */
+	
+}
+
+
+
+.nav .nav-elements .navbar {
+	margin: 0;
+	padding: 0;
+	line-height: 120%;
+	list-style-type: none;
+	margin-top: 2rem;
+	width: 100%
+}
+
+.nav .nav-elements .navbar a {
+
+	
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	-webkit-transition: 1s ease-out;
+	transition: 1s ease-out
+}
+
+.nav .nav-elements .navbar a:after {
+	content: '';
+	display: block;
+	height: 5px;
+	width: 0;
+	margin: 0 .5rem;
+	-webkit-transition: width .3s ease-out, background-color .3s ease-out;
+	transition: width .3s ease-out, background-color .3s ease-out
+}
+
+.nav .nav-elements .navbar a:hover {
+	color: #f3d350
+}
+
+.nav .nav-elements .navbar a:hover:after {
+	width: 100%;
+	background: #f3d350
+}
+
+
+@media screen and (min-width:600px) {
+	.nav .nav-elements {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex
+	}
+}
+
+@media screen and (min-width:600px) {
+	.nav .nav-elements .branding {
+		width: 30%;
+		margin: 0
+	}
+}
+
+@media screen and (min-width:600px) {
+	.nav .nav-elements .navbar {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: end;
+		-webkit-justify-content: flex-end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+		-webkit-align-content: flex-start;
+		-ms-flex-line-pack: start;
+		align-content: flex-start;
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap
+	}
+}
+
+
+
+/* nav */
+.footer {
+	background-color: ##00f2d7;
+	color: #fff;
+	padding: 0 0 5em;
+	line-height: 100%;
+	text-align: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: end;
+	-webkit-align-items: flex-end;
+	-ms-flex-align: end;
+	align-items: flex-end;
+	background: -webkit-linear-gradient(top, transparent, #312a10),
+		url(../images/backgrounds/festival_vibes.jpg);
+	background: linear-gradient(180deg, transparent, #312a10),
+		url(../images/backgrounds/festival_vibes.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	height: 60vh;
+	max-height: 800px
+}
+
+.footer .nav {
+	margin-top: 0
+}
+
+.footer .legal {
+	max-width: 700px;
+	margin: 0 auto;
+	font-size: 1rem;
+	line-height: 110%;
+	margin-top: 3rem
+}
+
+.info a{
+  background: #FFD185 ;
+  padding: 30px;
+  color: black;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.section {
+	min-height: 40vh;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	line-height: 160%
+}
+
+.section .headline {
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 4rem;
+	margin-top: rem;
+	line-height: 110%
+}
+
+.section a, .section em {
+	font-size: 140%;
+	vertical-align: -6%
+}
+
+@media screen and (min-width:600px) {
+	.section {
+		font-size: 2rem
+	}
+}
+
+#buy{
+	background-color: #00f2d7
+}
+
+#edit{
+	background-color: #00f2d7
+}
+
+#show{
+	background-color: #00f2d7
+}
+
+#calendar{
+	background-color: #00f2d7
+}
+
+#history {
+	background-color: #00f2d7
+}
+
+
+#history em {
+	color: #e69f2a
+}
+
+@media screen and (min-width:1200px) {
+	#history {
+		background-image: url(../images/artists/Smiley.jpg);
+		background-repeat: no-repeat;
+		background-position: center right;
+		background-size: 35% auto;
+		min-height: 100vh
+	}
+	#history .text-content {
+		width: 70%
+	}
+}
+
+#tickets { /*.product-list*/
+	background-color: #00f2d7
+}
+
+#tickets .imageheader {
+	background: -webkit-linear-gradient(top, transparent, transparent),
+		url(../images/backgrounds/festival_feeling.jpg);
+	background: linear-gradient(180deg, transparent, transparent),
+		url(../images/backgrounds/festival_feeling.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	height: 60vh;
+	max-height: auto
+}
+
+#tickets .ticket-list {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap /*.ticket-item*/
+}
+
+#tickets .ticket-list .ticket-item {
+	position: relative;
+	color: #fff;
+	overflow: hidden;
+	width: 50%;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+	opacity: .8 /*.ticket-name*/
+}
+
+#tickets .ticket-list .ticket-item .ticket-name {
+	background: #d14348;
+	color: #f3d350;
+	font-weight: 700;
+	font-size: 80%;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: none
+}
+
+#tickets .ticket-list .ticket-item:focus .ticket-name, #tickets .ticket-list .ticket-item:hover .ticket-name
+	{
+	display: block
+}
+
+#tickets .ticket-list .ticket-item:focus, #tickets .ticket-list .ticket-item:hover
+	{
+	opacity: 1;
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+	z-index: 1
+}
+
+#tickets .ticket-list .ticket-item:focus .ticket-name, #tickets .ticket-list .ticket-item:hover .ticket-name
+	{
+	display: block;
+	-webkit-animation: a 1s;
+	animation: a 1s
+}
+
+@
+-webkit-keyframes a { 0%{
+	-webkit-transform: translate3d(0, 100%, 0);
+	transform: translate3d(0, 100%, 0);
+	visibility: visible
+}
+
+to {
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0)
+}
+
+}
+@
+keyframes a { 0%{
+	-webkit-transform: translate3d(0, 100%, 0);
+	transform: translate3d(0, 100%, 0);
+	visibility: visible
+}
+
+to {
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0)
+}
+
+}
+
+
+
+/* tickets*/
+#guarantee {
+	
+	font-size: 2rem;
+	background-color: #00f2d7
+}
+
+
+
+#history em {
+	color: #e69f2a
+}
+
+
+
+#artists {
+	background-color: #00f2d7 /*.artists-cards*/
+}
+
+#artists .imageheader {
+	background: -webkit-linear-gradient(top, transparent, #e7c84c),
+		url(../images/backgrounds/festival_stage.jpg);
+	background: linear-gradient(180deg, transparent, #e7c84c),
+		url(../images/backgrounds/festival_stage.jpg);
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: cover;
+	height: 100vh;
+	max-height: 40vh
+}
+
+#artists .headline {
+	
+	padding-bottom: 2rem
+}
+
+#artists .artists-cards { /*.artists-card*/
+	
+}
+
+#artists .artists-cards .artists-card {
+	background: hsla(0, 0%, 100%, .2);
+	box-shadow: 5px 5px 3px rgba(243, 211, 80, .5);
+	border-radius: 20px;
+	margin-bottom: 3rem;
+	-webkit-transition: all .2s ease-in;
+	transition: all .2s ease-in;
+	-webkit-transform: scale(.9);
+	transform: scale(.9);
+	opacity: .8 /*.card-text*/
+}
+
+#artists .artists-cards .artists-card .card-info {
+	background: rgba(255, 177, 47, .9);
+	padding: 3% 7%
+}
+
+#artists .artists-cards .artists-card .card-info .card-name {
+	font-size: 2rem;
+	line-height: 110%;
+	color: #d14348
+}
+
+#artists .artists-cards .artists-card .card-info .card-title {
+	color: hsla(0, 0%, 100%, .6);
+	font-size: 1.4rem;
+	line-height: 100%
+}
+/*.card-info*/
+#artists .artists-cards .artists-card .card-text {
+	font-size: 1.6rem;
+	font-weight: 300;
+	line-height: 130%;
+	margin: 0;
+	padding: 7%
+}
+
+#artists .artists-cards .artists-card .card-text em {
+	color: #f2a82d;
+	font-size: 2.2rem
+}
+
+#artists .artists-cards .artists-card:hover {
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+	opacity: 1
+}
+
+@media screen and (min-width:600px) {
+	#artists .artists-cards {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-box-pack: justify;
+		-webkit-justify-content: space-between;
+		-ms-flex-pack: justify;
+		justify-content: space-between
+	}
+}
+
+@media screen and (min-width:600px) {
+	#artists .artists-cards .artists-card {
+		width: calc(100%/ 2 - 1.5rem)
+	}
+}
+
+@media screen and (min-width:1200px) {
+	#artists .artists-cards .artists-card {
+		width: calc(100%/ 3 - 1.5rem)
+	}
+}
+/*.artists*/
+
+
+section#tickets>li>button {
+	margin: 5px;
+}
+
+
+
+span#size{
+	font-family: Raleway, Helvetica, Arial, sans-serif;
+	color: #bfc406; 
+	font-size: 20px;
+	font-weight: 700;
+	width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  vertical-align: top;
+}
+table.list {
+  width: 100%;
+}
+
+table.list tr td {
+  border: 1px solid #999999;
+}
+table.list tr th {
+  border: 1px solid #0055DD;
+  color: white;
+  text-align: left;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+   border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f3d350;
+  color: white;
+}
+
+dl {
+  clear: both;
+  overflow: hidden;
+  margin: 0.5em 0;
+}
+
+dt {
+  float: left;
+  font-weight: bold;
+  width: 125px;
+}
+
+dd {
+  float: left;
+  margin-left: 1em;
+}
+
+/* Errors */
+
+.errors {
+  display: inline-block;
+  border: 2px solid red;
+  color: red;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.errors ul {
+  margin-bottom: 0;
+  padding-left: 1em;
+}

@@ -1,0 +1,12 @@
+Titlu: Gestiunea festivalului XyZ
+
+	XyZ este o serie de festivaluri de muzica organizata in mai multe ORASE din Romania. Unui oras
+ii corespunde un festival a carui date sunt gasite pe pagina de internet www.XyZ.com si contin detalii despre:
+numarul de artisti anuntati ca vor veni la festival, locatia, numele orasului.
+	Unui festival ii corespunde o lista de ARTISTI care vor urca pe scene pentru a incanta publicul. 
+Acestia au un sepctacol bine definit care cuprinde: ora de START si de FINAL de pe scena, numarul de pauze 
+pe care acestia il iau, precum si data cand se desfasoara. 
+	Spectatorii care doresc sa participe la acest festival trebuie sa achizitioneze un bilet pentru a avea acces.
+ Acestia trebuie sa prezinte la casele de bilete informatii ca: cnp, nume prenume,
+e-mail si numar de telefon. Un bilet poate fi de mai multe tipuri in functie de amplasarea fata de scena: vip, class1, class2, class3, etc.
+ 

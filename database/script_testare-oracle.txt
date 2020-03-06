@@ -1,0 +1,119 @@
+---Verificarea valorilor introduse---
+select * from artisti;
+select * from bilete;
+select * from festivaluri;
+select * from spectacole;
+select * from spectatori;
+select * from tip_bilet;
+
+---Afisarea spectacolelor din luna martie a anului 2020---
+select data_spectacol
+from spectacole sp 
+where to_char(data_spectacol,'fmMON') = 'MAR'
+and TO_NUMBER(to_char(data_spectacol,'fmYYYY')) = 2020;
+
+---Afisarea numelui artistilor si a datei in care au spectacol la festivalul din Bucuresti, ordonat dupa data spectacolului---
+select ar.nume_de_scena, sp.data_spectacol
+from artisti ar, spectacole sp, festivaluri f
+where ar.id_artist = sp.id_artist
+and sp.id_festival = f.id_festival
+and f.nume_oras = 'Bucuresti'
+order by  sp.data_spectacol;
+
+---Afisarea numelui persoanelor si a tipului biletului achizitionat ordonat dupa pretul biletului descrescator---
+select sp.nume, tb.nume_bilet
+from spectatori sp, tip_bilet tb, bilete b
+where sp.cnp = b.cnp
+and b.nume_bilet = tb.nume_bilet
+order by tb.pret_bilet desc;
+
+---Afisarea numelui si a piesei de inceput a tuturor artistilor care au ca gen muzical rock, in caz ca piesa de inceput nu este anuntata, se va afisa textul 'indisponibil'---
+select nume_de_scena, nvl2(piesa_start,piesa_start,'indisponibil')
+from artisti
+where lower(gen_muzical) like('rock');
+
+
+---Afisarea datei si a orei de inceput si sfarsit a spectacolelor la care poate partcipa persoana cu mail-ul TuPo@gmail.com, in ordine crescatoare dupa data, iar in cazul aceleasi date ascendent dupa ora de start--
+select sp.data_spectacol, sp.ora_start,sp.ora_stop
+from spectacole sp, spectatori spec, bilete b, festivaluri f
+where spec.cnp = b.cnp
+and b.id_festival = f.id_festival
+and b.id_festival = sp.id_festival
+and sp.data_spectacol BETWEEN b.data_acces and b.data_expirare
+and spec.email like('TuPo@gmail.com')
+order by  sp.data_spectacol asc, sp.ora_start asc;
+
+---Afisarea prenumelui persoanelor care stau in fata scenei(vip) la concertul lui Smiley din Botosani---
+select spec.prenume
+from spectatori spec, bilete b, tip_bilet tb, festivaluri f, spectacole sp, artisti a
+where spec.cnp = b.cnp
+and b.nume_bilet= tb.nume_bilet
+and b.id_festival = f.id_festival 
+and sp.id_festival = f.id_festival
+and sp.id_artist = a.id_artist
+and lower(a.nume_de_scena) like('smiley')
+and upper(f.nume_oras) = 'BOTOSANI'
+and lower(tb.nume_bilet) = 'vip';
+
+---Afisarea locatiilor precum si a datei la care trebuie sa ajunga trupa Holograf pentru a-si desfasura concertele---
+select sp.data_spectacol, f.locatie
+from artisti a, spectacole sp, festivaluri f
+where a.id_artist = sp.id_artist
+and sp.id_festival = f.id_festival
+and lower(a.nume_de_scena) = 'holograf';
+
+--- Sa se afiseze toate spectacole care se desfasoara inainte de ora 20:00---
+select sp.ora_start, sp.ora_stop
+from spectacole sp, festivaluri f
+where sp.id_festival = f.id_festival
+and to_number(substr(sp.ora_stop,1,2))<20;
+
+---Sa se afiseze la ce ora incepe concertele trupa The Motans---
+select sp.ora_start
+from spectacole sp, artisti a, festivaluri f
+where a.id_artist = sp.id_artist 
+and sp.id_festival = f.id_festival
+and lower(a.nume_de_scena) ='the motans';
+
+---Afisarea prenumelui, pretului si a tipului biletului cumparat de persoanele care merg la concertul Trooper din Bucuresti si au peste 40 ani---
+select spec.prenume, tb.nume_bilet,tb.pret_bilet
+from spectatori spec, bilete b, tip_bilet tb, festivaluri f, spectacole sp, artisti a
+where spec.cnp = b.cnp
+and b.nume_bilet= tb.nume_bilet
+and b.id_festival = f.id_festival 
+and sp.id_festival = f.id_festival
+and sp.id_artist = a.id_artist
+and lower(a.nume_de_scena) like('trooper')
+and upper(f.nume_oras) = 'BUCURESTI'
+and to_number(to_char(sysdate,'fmyyyy'))- to_number(concat('19',substr(spec.cnp,2,2))) >=40;
+
+---Incalcare Constrangeri---
+---Detalii despre ce constrangere a fost incalcata si mesajul de eroare afisat in anexa documentatiei ---
+---Subtitlu din anexa: Constrangerile si instructiuni de incalcare a constrangerilor bazei de date---
+INSERT INTO artisti(id_artist,Nume_de_scena, Gen_muzical, Piesa_start) VALUES (1,'dada', 'dada','dada');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES (null, 'dada','dada');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('a', 'dada','dada');
+INSERT INTO artisti(Nume_de_scena, Gen_muzical, Piesa_start) VALUES ('ba', '1','dada');
+insert into spectacole values('22-MAR-17', '18:00','20:00',(select id_artist from artisti where id_artist = 29), (select id_festival from festivaluri where id_festival = 3),2);
+insert into spectacole values('22-MAR-16', '18::00','20:00',(select id_artist from artisti where id_artist = 30), (select id_festival from festivaluri where id_festival = 3),2);
+insert into spectacole values('22-MAR-16', '18:00','201:00',(select id_artist from artisti where id_artist = 30), (select id_festival from festivaluri where id_festival = 3),2);
+insert into spectacole values('22-MAR-16', '18:00','20:00',(select id_artist from artisti where id_artist = 1), (select id_festival from festivaluri where id_festival = 3),2);
+insert into festivaluri(id_festival,Locatie, Nume_oras, Nr_artisti) values(1,'Palatul sasa', 'asa', 17);
+insert into festivaluri(id_festival,Locatie, Nume_oras, Nr_artisti) values(10,'1', 'asa', 17);
+insert into festivaluri(id_festival,Locatie, Nume_oras, Nr_artisti) values(10,null, '21312', 17);
+insert into festivaluri(id_festival,Locatie, Nume_oras, Nr_artisti) values(10,'1', null, 17);
+insert into bilete values('22-MAR-2010','26-MAR-2020',(select cnp from spectatori where cnp ='1841115209291'),(select id_festival from festivaluri where id_festival = 1), 'class1');
+insert into bilete values('22-MAR-2020','20-MAR-2020',(select cnp from spectatori where cnp ='1841115209291'),(select id_festival from festivaluri where id_festival = 1), 'class1');
+insert into bilete values('22-MAR-2020','24-MAR-2020',(select cnp from spectatori where cnp ='1841115209291'),(select id_festival from festivaluri where id_festival = 1), 'class1');
+insert into tip_bilet values('class1',450);
+insert into tip_bilet values('class7',null);
+insert into tip_bilet values('class7',-50);
+insert into spectatori values('1841115209291','Tudor','Ionescu','0722222222','TuPo@gmail.com');
+insert into spectatori values('1841115009291',null,'Ionescu','0722222222','TuPo@gmail.com');
+insert into spectatori values('1841115009291','1','Ionescu','0722222222','TuPo@gmail.com');
+insert into spectatori values('1841115009291','211','1','0722222222','TuPo@gmail.com');
+insert into spectatori values('1841115009291','211',null,'0722222222','TuPo@gmail.com');
+insert into spectatori values('1841115009291','211','211','0a22242222','TuPo@gmail.com');
+insert into spectatori values('1841115009291','211','211',null,'TuPo@gmail.com');
+insert into spectatori values('1841115209291','Tudor','Ionescu','0722222222',null);
+insert into spectatori values('1841115209291','Tudor','Ionescu','0722222222','sa');

@@ -1,0 +1,67 @@
+---Verificarea valorilor introduse---
+select * from artisti;
+select * from bilete;
+select * from festivaluri;
+select * from spectacole;
+select * from spectatori;
+select * from tip_bilet;
+
+---Afisarea numelui artistilor si a datei in care au spectacol la festivalul din Bucuresti, ordonat dupa data spectacolului---
+select ar.nume_de_scena, sp.data_spectacol
+from artisti ar, spectacole sp, festivaluri f
+where ar.id_artist = sp.id_artist
+and sp.id_festival = f.id_festival
+and f.nume_oras = 'Bucuresti'
+order by  sp.data_spectacol;
+
+---Afisarea numelui persoanelor si a tipului biletului achizitionat ordonat dupa pretul biletului descrescator---
+select sp.nume, tb.nume_bilet
+from spectatori sp, tip_bilet tb, bilete b
+where sp.cnp = b.cnp
+and b.nume_bilet = tb.nume_bilet
+order by tb.pret_bilet desc;
+
+
+---Afisarea datei si a orei de inceput si sfarsit a spectacolelor la care poate partcipa persoana cu mail-ul TuPo@gmail.com, in ordine crescatoare dupa data, iar in cazul aceleasi date ascendent dupa ora de start--
+select sp.data_spectacol, sp.ora_start,sp.ora_stop
+from spectacole sp, spectatori spec, bilete b, festivaluri f
+where spec.cnp = b.cnp
+and b.id_festival = f.id_festival
+and b.id_festival = sp.id_festival
+and sp.data_spectacol BETWEEN b.data_acces and b.data_expirare
+and spec.email like('TuPo@gmail.com')
+order by  sp.data_spectacol asc, sp.ora_start asc;
+
+---Afisarea prenumelui persoanelor care stau in fata scenei(vip) la concertul lui Smiley din Botosani---
+select spec.prenume
+from spectatori spec, bilete b, tip_bilet tb, festivaluri f, spectacole sp, artisti a
+where spec.cnp = b.cnp
+and b.nume_bilet= tb.nume_bilet
+and b.id_festival = f.id_festival 
+and sp.id_festival = f.id_festival
+and sp.id_artist = a.id_artist
+and lower(a.nume_de_scena) like('smiley')
+and upper(f.nume_oras) = 'BOTOSANI'
+and lower(tb.nume_bilet) = 'vip';
+
+---Afisarea locatiilor precum si a datei la care trebuie sa ajunga trupa Holograf pentru a-si desfasura concertele---
+select sp.data_spectacol, f.locatie
+from artisti a, spectacole sp, festivaluri f
+where a.id_artist = sp.id_artist
+and sp.id_festival = f.id_festival
+and lower(a.nume_de_scena) = 'holograf';
+
+---Sa se afiseze la ce ora incepe concertele trupa The Motans---
+select sp.ora_start
+from spectacole sp, artisti a, festivaluri f
+where a.id_artist = sp.id_artist 
+and sp.id_festival = f.id_festival
+and lower(a.nume_de_scena) ='the motans';
+
+
+--- Sa se afiseze toate spectacole care se desfasoara inainte de ora 20:00---
+select sp.ora_start, sp.ora_stop
+from spectacole sp, festivaluri f
+where sp.id_festival = f.id_festival
+and cast(substr(sp.ora_stop,1,2) as signed)<20;
+

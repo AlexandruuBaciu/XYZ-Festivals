@@ -1,0 +1,142 @@
+CREATE TABLE artisti (
+    id_artist       int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nume_de_scena   VARCHAR(30) NOT NULL,
+    gen_muzical     VARCHAR(20),
+    piesa_start     VARCHAR(30)
+);
+
+ALTER TABLE artisti
+    ADD CONSTRAINT nume_de_scena_cons CHECK ( char_length(nume_de_scena) > 1 );
+
+ALTER TABLE artisti
+    ADD CONSTRAINT gen_muzical_cons CHECK ( char_length(gen_muzical) > 1 );
+
+
+CREATE TABLE bilete (
+    data_acces      DATETIME NOT NULL,
+    data_expirare   DATETIME NOT NULL,
+    cnp             VARCHAR(13) NOT NULL,
+    id_festival     TINYINT NOT NULL,
+    nume_bilet      VARCHAR(10) NOT NULL
+);
+
+ALTER TABLE bilete
+    ADD CONSTRAINT data_expirare_cons CHECK ( data_expirare - data_acces > 0 );
+
+ALTER TABLE bilete
+    ADD CONSTRAINT bilete_pk PRIMARY KEY ( cnp,
+                                           id_festival,
+                                           nume_bilet );
+
+CREATE TABLE festivaluri (
+    id_festival   int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    locatie       VARCHAR(30) NOT NULL,
+    nume_oras     VARCHAR(30) NOT NULL,
+    nr_artisti    TINYINT NOT NULL
+);
+
+ALTER TABLE festivaluri
+    ADD CONSTRAINT locatie_cons CHECK ( char_length(locatie) > 1 );
+
+ALTER TABLE festivaluri
+    ADD CONSTRAINT nume_oras_cons CHECK ( char_length(nume_oras) > 0 );
+
+ALTER TABLE festivaluri ADD CONSTRAINT nr_artisti_cons CHECK ( nr_artisti > 0 );
+
+
+CREATE TABLE spectacole (
+    data_spectacol       DATETIME NOT NULL,
+    ora_start            VARCHAR(5) NOT NULL,
+    ora_stop             VARCHAR(5) NOT NULL,
+    id_artist            TINYINT NOT NULL,
+    id_festival          TINYINT NOT NULL,
+    nr_pauze_spectacol   TINYINT
+);
+
+ALTER TABLE spectacole
+    ADD CONSTRAINT oras_cons CHECK ( char_length(ora_start) = 5
+                                     AND ( cast(substr(ora_start, 1, 2) as signed) BETWEEN 0 AND 24 )
+                                     AND ( cast(substr(ora_start, 4, 2) as signed) BETWEEN 0 AND 59 )
+                                     AND substr(ora_start, 3, 1) = ':' );
+
+ALTER TABLE spectacole
+    ADD CONSTRAINT orast_cons CHECK ( char_length(ora_stop) = 5
+                                      AND ( cast(substr(ora_stop, 1, 2) as signed) BETWEEN 0 AND 24 )
+                                      AND ( cast(substr(ora_stop, 4, 2) as signed) BETWEEN 0 AND 59 )
+                                      AND substr(ora_stop, 3, 1) = ':'
+                                      AND ( cast(substr(ora_stop, 1, 2) as signed) > cast(substr(ora_start, 1, 2) as signed) ) );
+
+ALTER TABLE spectacole ADD CONSTRAINT nr_pauze_cons CHECK ( nr_pauze_spectacol >= 0 );
+
+ALTER TABLE spectacole ADD CONSTRAINT spectacole_pk PRIMARY KEY ( id_artist,
+                                                                  id_festival );
+
+CREATE TABLE spectatori (
+    cnp       VARCHAR(13) NOT NULL,
+    prenume   VARCHAR(35) NOT NULL,
+    nume      VARCHAR(35) NOT NULL,
+    telefon   VARCHAR(10) NOT NULL,
+    email     VARCHAR(45) NOT NULL
+);
+
+ALTER TABLE spectatori
+    ADD CONSTRAINT cnp_cons CHECK ( REGEXP_LIKE ( cnp,
+                                                  '^[1,2,5,6]d{2}(0[1-9]|1[0-2])(0[1-9]|[12]d|3[01])(0[1-9]|[1-4]d|5[0-2]|99)(00[1-9]|0[1-9]d|[1-9]dd)d$'
+                                                  ) );
+
+ALTER TABLE spectatori
+    ADD CONSTRAINT prenume_cons CHECK ( char_length(prenume) > 1 );
+
+ALTER TABLE spectatori
+    ADD CONSTRAINT nume_spectator_cons CHECK ( char_length(nume) > 1 );
+
+ALTER TABLE spectatori
+    ADD CONSTRAINT telefon_cons CHECK ( REGEXP_LIKE ( telefon,
+                                                      '^(+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(s|.|-)?([0-9]{3}(s|.|-|)){2}$'
+                                                      ) );
+
+ALTER TABLE spectatori
+    ADD CONSTRAINT email_cons CHECK ( REGEXP_LIKE ( email,
+                                                    '[a-z0-9._%-]+@[a-z0-9._%-]+.[a-z]{2,4}' ) );
+
+ALTER TABLE spectatori ADD CONSTRAINT spectatori_pk PRIMARY KEY ( cnp );
+
+CREATE TABLE tip_bilet (
+    nume_bilet   VARCHAR(10) NOT NULL,
+    pret_bilet   INT NOT NULL
+);
+
+ALTER TABLE tip_bilet
+    ADD CONSTRAINT nume_bilet_cons CHECK ( char_length(nume_bilet) > 0 );
+
+ALTER TABLE tip_bilet ADD CONSTRAINT pret_bilet_cons CHECK ( pret_bilet > 0 );
+
+ALTER TABLE tip_bilet ADD CONSTRAINT tip_bilet_pk PRIMARY KEY ( nume_bilet );
+
+
+ALTER TABLE bilete modify id_festival int(11);
+
+ALTER TABLE bilete
+    ADD FOREIGN KEY ( id_festival )
+        REFERENCES festivaluri ( id_festival );
+
+ALTER TABLE bilete
+    ADD CONSTRAINT bilete_spectatori_fk FOREIGN KEY ( cnp )
+        REFERENCES spectatori ( cnp );
+
+ALTER TABLE bilete
+    ADD CONSTRAINT bilete_tip_bilet_fk FOREIGN KEY ( nume_bilet )
+        REFERENCES tip_bilet ( nume_bilet );
+
+alter table spectacole modify id_festival int(11);
+alter table spectacole modify id_artist int(11);
+
+ALTER TABLE spectacole
+    ADD CONSTRAINT spectacole_artisti_fk FOREIGN KEY ( id_artist )
+        REFERENCES artisti ( id_artist );
+
+ALTER TABLE spectacole
+    ADD CONSTRAINT spectacole_festivaluri_fk FOREIGN KEY ( id_festival )
+        REFERENCES festivaluri ( id_festival );
+
+
